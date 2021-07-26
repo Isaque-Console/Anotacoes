@@ -1,0 +1,6 @@
+===Query builder faz uma abstração da query do sql. É bom pois se mudar de banco de dados ele muda a query de acordo com o banco. O
+Knex tem suporte para migrations(que determina o histórico de alterações da base de dados).
+
+===ORM tem um nível maior de abstração, por isso temos que escrever menos código. Os ORM's às vezes usam query builder. Muitos ORM's
+vem com configuração para replicar as entidades de OO no banco de dados.
+

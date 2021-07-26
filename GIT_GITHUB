@@ -1,0 +1,135 @@
+					GIT & GITHUB
+
+CICLO DE VIDA DOS STATUS DOS ARQUIVOS NO GIT:
+
+1. untracked: o momento em que o arquivo acabou de ser adicionado no repositório, mas ainda não foi visto pelo git. 
+
+2. unmodified: o arquivo existe no git, mas não teve nenhuma modificação.
+
+3. modified: um arquivo modificado.
+
+4. staged: área onde vai ser criada a versão. O momento em que o arquivo vai esperar a sessão ser fechada para levar os arquivos.
+
+COMANDOS E FERRAMENTAS:
+
+1. git reset --hard Código_Da_Hash_Que_Quer_Voltar (mata tudo que foi feito do commit).
+
+2. git log (mostra o author da modificação, a data dela, a mensagem do commit e o hash). 
+
+3. git shortlog (mostra as pessoas que alteraram os arquivos, quantas modificações cada
+um fez e os commits que cada um fez).
+
+4. git shortlog -sn (mostra o nome de quem fez alterações e quantas alterações cada um
+fez).
+
+5. git diff (mostra todas as alterações que fiz).
+
+6. git checkout (retornar os arquivos e as modificações quando ainda estão no estado de
+edição).
+
+7. git remote (mostra o repositório remoto, se ele existir).
+
+8. wq (usado após algum comando, quando se quer fazer outro comando mas a tela não está
+recebendo comando nenhum).
+
+9. git commit -am "Mensagem_do_commit" (Adiciona os arquivos modificados e commita ao
+mesmo tempo).
+
+10. git push -u origin master (usado para subir o repositório local para o repositório
+remoto. Só preciso usar o "-u" da primeira vez, das próximas vezes é só usar "git push
+origin master". Origin é para onde vai, e master é de onde vem).
+
+11. git clone link_para_clonar nome_para_repositório. ( serve para clonar o repositório para a sua máquina ).
+
+12. O fork serve para clonar um repositório, fazer mudanças nele e depois submeter as suas mudanças para o dono do repositório. Para usar
+o fork, é só apertar no botão "fork" que tem no repositório.
+
+==========================================================================================================================================
+							TRABALHANDO COM BRANCHS(lógica)
+							
+1. criar uma nova branch;
+2. entrar na nova branch;
+3. fazer alterações nela;
+4. add os arquivos modificados;
+5. commitar as mudanças feitas;
+6. entrar na branch master;
+7. fazer um merge da outra branch para a branch master. 
+							
+							TRABALHANDO COM BRANCHS(comandos)
+							
+1. ver quais brachs existem e saber em qual delas você está. O "*" é para informar em qual branch você está: git branch
+2. criar uma nova branch: git branch nome_da_branch
+3. mudar para outra branch: git checkout nome_da_branch
+4. para fazer um merge(trazer as alterações de outra branch para a branch atual): git merge nome_da_branch_que_tem_as_alterações
+5. para apagar uma branch(este passo não está contido na lógica, então só use se realmente precisar): git branch -d nome_da_branch
+
+============================================================================================================================================
+								BRANCH
+								
+BRANCH: é um ponteiro móvel que leva a um commit.
+
+VANTAGENS DE USAR BRANCHS: poder modificar o código sem alterar o local principal; é fácil de ser criado e de ser apagado; múltiplas
+pessoas podem estar trabalhando; evita conflitos, pois as branchs podem ser alinhadas com a branch master;
+
+- Apagar uma branch no repositório remoto: git push origin :nome_da_branch
+
+============================================================================================================================================
+								MERGE
+
+MERGE: cria um commit novo para juntar todo o código, o código já feito na branch master e o código feito na outra branch.
+
+PROS DO MERGE: essa operação não modifica o histórico.
+
+CONTRAS DO MERGE: faz um commit extra; o histórico fica difícil de entender.
+
+============================================================================================================================================
+								REBASE
+								
+REBASE: Joga as mudanças para o início da fila
+
+PROS: evita commits extras; histórico linear(mais fácil de entender).
+
+CONTRAS: perde ordem cronológica(muda o histórico), então pode dar conflito.
+
+============================================================================================================================================
+								STASH
+								
+- Salvar as alterações feitas e voltar para o último commit: git stash
+- Voltar para as alterações feitas: git stash apply
+- Mostrar a lista de todos os stash: git stash list
+- Limpar tudo que está no stash: git stash clear
+
+OBS: Útil, por exemplo, para quando quero subir o último commit para o repositório remoto, mas estou fazendo mudanças no código. Então, dou um stash, dou um pull, e volto com as alterações.
+
+============================================================================================================================================
+								ALIAS(Criar atalhos)
+								
+- git config --global alias.nome_atalho comando. Ex: git config --global alias.s status (ao invés de usar 'git status', usa 'git s')
+
+============================================================================================================================================
+								TAGS
+								
+- Marcar que foram feitas alterações mais importantes, por exemplo, um conjunto de commits que resultou na criação de uma página: git tag -a 1.0.0 -m "Página concluida"
+- Ver todas as tags: git tag
+- Subir uma nova tag para o repositório remoto: git push origin master --tags
+- Apagar uma tag no repositório local: git tag -d nome_da_tag
+- Apagar as tags de um repositório remoto: git push origin :nome_da_tag
+
+============================================================================================================================================
+								REVERT
+
+- Reverter o código para o commit anterior, mas deixa salvo o commit revertido, podendo ser acessados com checkout ou com reset: git revert codigo_do_commit
+
+============================================================================================================================================
+								RESET
+								
+- Tirar o arquivo da fila de staged(ou seja, quando foi dado um git add nele): git reset HEAD nome_do_arquivo
+- Mata o commit, mas as alterações continuam, e o arquivo continua na área de staged, só que sem estar commitado: git reset --soft codigo_do_commit
+- Mata o commit e volta o arquivo pra área de modified: git reset --mixed codigo_do_commit
+-  : git reset --hard codigo_do_commit
+
+
+
+
+
+

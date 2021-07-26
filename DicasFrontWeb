@@ -1,0 +1,20 @@
+[] Figma - ferramenta para mostrar o design final que um site deve ter.
+
+[] Significado de fazer um texto semântico no HTML: Utilizar corretamente os elementos HTML, cada qual com seu propósito, o máximo que for possível.
+
+[] DOM(Document Object Model) - É um objeto que contém um modelo do meu html todo. O DOM é carregado de funcionalidades.
+
+*Divisão hierarquica do HTML:*
+Cabeçalho:
+
+1. Usar a tag header e a tag h1 dentro, para colocar a logo.
+
+Corpo:
+1. Usar a tag main para o conteúdo principal da página, section para as subdivsões e div para a terceira camada da divisão.
+
+2. Colocar uma class para as divs, para ficar mais fácil de referenciar no css, e ainda posso usar o mesmo nome de class, para fazer as mesmas
+modificações em todas as divs.
+
+Rodapé:
+
+1. Usar a tag footer e a tag <p> dentro dela para colocar o rodapé.

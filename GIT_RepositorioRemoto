@@ -1,0 +1,27 @@
+[] Verificar o nome do repositório remoto atual:
+-git remote
+
+[] Verificar a URL do repositório remoto atual:
+- git rmeote -v
+ 
+[] Remover um repositório remoto:
+- git remote remove nome_repositorio
+
+[] Add remote repository:
+- git remote add repository_name repository_url(code>https)
+
+[] Configurar o git pull para que ele funcione puxando o remoto para o master(local):
+- git branch --set-upstream-to=origin/master master
+
+[] Enviar todas as branches
+- git push origin --all
+
+[] Mostra alguma coisa do repositório remoto
+- git remote show origin
+
+[] Puxa do repositório remoto aquilo que ainda não existe no seu repositório local, sem
+alterar aquilo que já existe no seu repositório local.
+- git pull
+
+
+

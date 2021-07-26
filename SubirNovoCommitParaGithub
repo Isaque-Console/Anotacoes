@@ -1,0 +1,3 @@
+1. Adicionar os arquivos modificados: git add .
+2. Fazer um novo commit: git commit -m "Second commit"
+3. Subir o commit para o github: git push 

@@ -1,0 +1,14 @@
+Configurando o ambiente virtual do python no VSCode
+1. python3 -m venv venv // para instalar o ambiente virtual, caso a IDE não faça isso(o pycharm faz)
+2. criar um arquivo .py //quando fizer isso, ele vai baixar uma extensão automaticamente
+3. pip install flask // instala o flask(micro framework do python)
+
+
+
+
+
+
+
+
+2. . venv/bin/activate   // Os passos 2 e 3 não são necessários, pois a extensão(python) que instalei no vscode já faz isso pra mim.
+3. deactivate   // não é necessário.

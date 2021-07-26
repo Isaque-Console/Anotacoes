@@ -1,0 +1,70 @@
+Existem n tipos de iteração no JS.
+1. for(int i = 0; i<10;i++){
+	console.log(i);
+}
+
+2.do{
+   i+=1;
+   console.log("hello world");
+}while(i<6);
+
+3.while(5<i){
+   i-=2;
+}
+
+4.
+let frutas = ['banana', 'uva', 'maracuja', 'morango'];
+frutas.forEach( (fruta,index) => console.log(index + fruta));
+
+5.
+arrayPedidos.forEach((pedido,index) {
+	let { nome, alimento, bebida } = pedido;
+	console.log(`${index} - ${nome} - ${alimento} - ${bebida}`);
+})
+
+6.verifica se existe o parâmetro e retorna e linha completa.
+let find = pedidos.find(pedido => {
+   return pedido.id = 40;
+});
+
+console.log(find);
+
+7.verifica se existe o parâmetro e retorna a linha completa.
+let filter = pedidos.filter(pedido => {
+   return pedido.bebida =='agua';
+});
+
+console.log(filter);
+
+8.verifica se existe o parâmetro e troca o parâmetro pela mensagem.
+pedidos.map(pedido => {
+   if(pedido.alimento == 'misto quente'){
+      return pedido.alimento = 'não temos no momento';
+   }
+});
+
+console.log(pedidos);
+
+9.verifica se todos condizem com o parametro e retorna boolean
+let every = pedidos.every(pedido => {
+   let { bebida } = pedido;
+   return bebida = 'agua';
+});
+
+console.log(every);
+
+10. verifica se existe algum e retorna boolean
+let some = pedidos.some(pedido => {
+   let { alimento } = pedido;
+   return alimento == 'arroz';
+});
+
+console.log(some);
+
+11.verifica determinado campo e faz algum cálculo especificado passando por todas as variáveis.
+let reduce = pedidos.reduce((total, pedidos) => {
+   let { preco } = pedido;
+   return total + preco; 
+}, 0);
+
+console.log(reduce);
