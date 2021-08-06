@@ -1,0 +1,293 @@
+						CREATE TABLE
+
+/*Exemplo de create table*/
+
+create table cliente(
+    idcliente int primary key auto_increment, /*'idcliente' sem underline pois é a PK da tabela*/
+    nome varchar(30) not null,
+    sexo enum('M','F') not null,
+    email varchar(50) unique,
+    cpf varchar(15) unique
+);
+
+create table endereco(
+    idendereco int primary key auto_increment,
+    rua varchar(30) not null,
+    bairro varchar(30) not null,
+    cidade varchar(30) not null,
+    estado char(2) not null,
+    id_cliente int unique, /*'idcliente' com underline pois é a FK da tabela*/
+    foreign key(id_cliente)
+    references cliente(idcliente)
+);
+
+create table telefone(
+    idtelefone int primary key auto_increment,
+    numero varchar(14) not null,
+    tipo enum('RES','COM','CEL') not null,
+    id_cliente int, /*'idcliente' com underline pois é a FK da tabela*/
+    foreign key(id_cliente)
+    references cliente(idcliente)
+);
+
+===================================================================================================================
+						SELECT COUNT(*)
+						
+SELECT COUNT(*) FROM nome_da_tabela; (vai trazer a quantidade de registros que existem nessa tabela)
+
+SELECT COUNT(*) FROM nome_da_tabela;
+WHERE email='isaquean2@gmail.com' (vai trazer a quantidade de registros que
+existem nessa tabela com esse valor de email)
+===================================================================================================================
+						SELECT GROUP BY
+
+SELECT COUNT(*),nome_do_campo_pesquisado (isso é pra fizer quais colunas serão
+exibidas no resultado)
+FROM nome_da_tabela
+GROUP BY nome_do_campo_pesquisado; (isso é pra dizer qual o campo que deverá ser contado o número de registros)
+
+===================================================================================================================
+						SELECT
+
+Se a consulta for de OR, coloca-se primeiro o parâmetro de maior ocorrência,
+para que se faça menos checagens no segundo parâmetro.
+Se a consulta for de AND, coloca-se primeiro o parâmetro de menor ocorrência,
+para que faça menos checagens no segundo parâmetro.
+
+===================================================================================================================
+						QUESTÃO 1
+
+SELECT COUNT(*),departamento
+FROM funcionarios
+group by departamento;
+
+SELECT * FROM funcionarios 
+WHERE departamento='roupas' or departamento='filmes';
+
+===================================================================================================================
+						QUESTÃO 2
+
+SELECT * from funcionarios
+where
+( departamento='Lar' and sexo='Feminino'  )
+or 
+( departamento='Filmes' and sexo='Feminino');
+===================================================================================================================
+						QUESTÃO 3
+
+SELECT * FROM funcionarios
+WHERE sexo='masculino' or departamento='jardim';
+===================================================================================================================
+							UPDATE
+
+UPDATE nome_da_tabela
+SET campo_que_quer_mudar=valor_novo
+WHERE campo_de_referencia=valor_da_referencia;
+
+Ex:
+UPDATE funcionario
+SET telefone=987777570
+WHERE id=1;
+
+OBS: Se não for usada a cláusula WHERE, serão atualizados todos os telefones do
+banco de dados.
+
+UPDATE cliente SET sexo = 'M' /* tabela e campo à serem alterados, novo valor */
+WHERE idcliente IN (11,16,22); /* todos esses 'idcliente' serão alterados */
+
+OBS: pode-se usar essa cláusula WHERE e IN na projeção também.
+
+===================================================================================================================
+							DELETE
+DELETE FROM nome_da_tabela
+WHERE nome_do_campo=valor_do_campo;
+
+ex:
+DELETE FROM funcionarios
+WHERE nome='ana'; (irá deletar da tabela funcionarios, todos os registros que
+têm o nome 'ana')
+
+OBS: antes de usar o DELETE, use o SELECT para checar quantos registros existem
+com aquele valor e quantos registros existem ao todo na tabela. Depois de usar
+o DELETE, conte quantos registros
+existem com aquele valor e quantos existem ao todo na tabela, para saber se a
+deleção foi feita de forma correta.
+
+===================================================================================================================
+							JUNÇÃO
+						
+SELECT nome,sexo,bairro,cidade /* projeção */
+FROM cliente /* origem */
+INNER JOIN endereco /* junção */
+ON idcliente = id_cliente /* a condição que uso pra juntar a tabela cliente à
+tabela endereco */
+WHERE sexo = 'F'; /* seleção */
+
+
+SELECT c.nome,c.sexo,e.bairro,e.cidade,t.tipo,t.numero /* identifica de qual
+tabela é cada um desses campos */
+FROM cliente c /* diz qual a tabela de origem e dá um apelido para ela */
+INNER JOIN endereco e /* diz com qual tabela quer juntar e dá um apelido para
+ela */
+ON c.idcliente = e.id_cliente /* diz como será feita essa junção(c.idcliente
+irá estar na mesma linha de e.id_cliente)*/
+INNER JOIN telefone t /* diz qual a outra tabela irá juntar e dá um apelido
+para ela */
+ON c.idcliente = t.id_cliente /* diz como será feita essa junção */;
+
+OBS: O uso de APELIDOS ou NOMES das tabelas para ponteiramento aumenta a
+performance.
+===================================================================================================================
+							ALTER TABLE
+							
+alter table produto
+change preco valor_unitario int not null; /* Altera na tabela produto as
+especificações do dado(nome, tipo, not null) */
+
+alter table produto
+add peso float(10,2) not null; /* acrescenta na tabela produto esse dado. O
+dado acrescentado vai como último da tabela por padrão (pode dar 'desc produto
+para conferir). */
+
+alter table produto
+drop column peso; /* apaga na tabela produto a coluna peso */
+
+alter table produto
+add column peso float(10,2) not null
+first; /* acrescenta um dado na tabela produto, e esse dado vai ficar como o
+primeiro da tabela quando der o 'desc produto' */
+
+===================================================================================================================
+							ORDER BY
+				
+/*MESCLANDO ORDER BY COM PROJECAO*/
+
+SELECT NOME FROM ALUNOS
+ORDER BY NUMERO,NOME;
+			
+SELECT * FROM ALUNOS
+ORDER BY 1; /*ORDENA PELA PRIMEIRA COLUNA, QUE É A COLUNA NUMERO*/
+
+SELECT * FROM ALUNOS
+ORDER BY 2; /*ORDENA PELA SEGUNDA COLUNA, QUE É O NOME*/
+
+/*ORDENANDO POR MAIS DE UMA COLUNA*/
+
+SELECT * FROM ALUNOS
+ORDER BY 1,2;
+
+/*ORDENANDO COM JOINS*/
+
+select c.nome, ifnull(c.email, 'Não tem email') as 'E-MAIL', t.tipo, t.numero, e.estado
+from cliente c
+inner join telefone t
+on c.idcliente = t.id_cliente
+inner join endereco e
+on c.idcliente = e.id_cliente
+ORDER BY 1;
+
+===================================================================================================================
+							DELIMITER & PROCEDURE
+				
+/*Para criar um procedure*/	
+		
+DELIMITER $
+CREATE PROCEDURE nome_procedimento(parâmetro1 tipo_dado, parâmetro2 tipo_dado)
+BEGIN
+	QUALQUER COMANDO; // dentro da procedure o delimiter é o ';'
+END
+$
+
+OBS: O '$' só irá valer como delimitador se eu rodar o comando 'DELIMITER $' junto com o bloco de código que eu quero delimitar
+por '$'. Se eu não rodar esse comando, o delimitador será o ';'.
+
+/*Para chamar uma procedure*/
+
+CALL nome_procedimento();
+
+/*Apagar uma procedure*/
+
+DROP PROCEDURE nome_procedimento;
+
+===================================================================================================================
+							FUNÇÕES MATEMÁTICAS NAS COLUNAS
+
+SELECT AVG(NOME_COLUNA) AS NOME_TITULO,
+	TRUNCATE(NUMERO,QTD_PONTO_FLUTUANTE) AS NOME_TITULO
+	FROM NOME_TABELA;
+
+EX:
+SELECT MAX(JANEIRO) AS BIGGER_JAN,
+	MIN(JANEIRO) AS SMALLER_JAN,
+	AVG(JANEIRO) AS AVG_JAN,
+	TRUNCATE(AVG(JANEIRO),2)
+	FROM VENDEDOR;
+	
+SELECT SUM(JANEIRO) AS TOTAL_JAN, // TRAZ A SOMA DE TODOS OS VALORES DA COLUNA JANEIRO
+	SUM(FEVEREIRO) AS TOTAL_FEV, // TRAZ A SOMA DE TODOS OS VALORES DA COLUNA FEVEREIRO
+       SUM(MARCO) AS TOTAL_MARCO // TRAZ A SOMA DE TODOS OS VALORES DA COLUNA MARCO
+       FROM VENDEDOR; // DA TABELA VENDEDOR
+	
+
+===================================================================================================================
+							FUNÇÕES MATEMÁTICAS NAS LINHAS
+
+SELECT (JANEIRO+FEVEREIRO+MARCO) AS "TOTAL" FROM VENDEDOR; // Traz a soma de todos os meses para cada vendedor;
+
+
+Questão 1: Trazer as vendas de cada mês, a soma deles e a média deles.
+SELECT NOME,JANEIRO,FEVEREIRO,MARCO,
+	TRUNCATE((JANEIRO+FEVEREIRO+MARCO),2) AS "TOTAL",
+	TRUNCATE((JANEIRO+FEVEREIRO+MARCO)/3,2) AS "AVERAGE"
+       FROM VENDEDOR;
+       
+OBS: Pode-se fazer diversas operações aritméticas na linhas.
+
+SELECT NOME,JANEIRO,FEVEREIRO,MARCO,
+	TRUNCATE((JANEIRO+FEVEREIRO+MARCO),2) AS "TOTAL",
+	TRUNCATE((JANEIRO+FEVEREIRO+MARCO),2) * 0.25 AS "DESCONTO", // Multiplica por 0.25 
+	TRUNCATE((JANEIRO+FEVEREIRO+MARCO)/3,2) AS "AVERAGE"
+       FROM VENDEDOR;
+
+
+===================================================================================================================
+							SUBQUERY
+Questão 1: Trazer o nome e o valor das vendas de março da pessoa que mais vendeu em março.
+SELECT NOME,MARCO AS MAX_MARCO 
+FROM VENDEDOR
+WHERE MARCO = (SELECT MAX(MARCO) FROM VENDEDOR);
+
+Questão 2: Trazer o nome e o valor das vendas de março da pessoa que vendeu menos em março.
+SELECT NOME,MARCO AS MIN_MARCO 
+FROM VENDEDOR
+WHERE MARCO = (SELECT MIN(MARCO) FROM VENDEDOR);
+
+Questão 3: Trazer o nome e o valor das vendas de março das pessoas que venderam mais que a média de março.
+SELECT NOME,MARCO 
+FROM VENDEDOR
+WHERE MARCO > (SELECT AVG(MARCO) FROM VENDEDOR);
+
+===================================================================================================================
+					ADICIONAR PK E FK POR FORA DA TABELA
+
+/*Adicionar PK em uma tabela*/
+ALTER TABLE CLIENTE ADD CONSTRAINT FK_CLIENTE
+PRIMARY KEY(IDCLIENTE);
+
+/*Adicionar uma FK em uma tabela*/
+ALTER TABLE TELEFONE ADD CONSTRAINT FK_CLIENTE_TELEFONE
+FOREIGN KEY(ID_CLIENTE) REFERENCES CLIENTE(IDCLIENTE);
+
+===================================================================================================================
+							TRIGGER
+
+DELIMITER $ /* PRECISA MUDAR O DELIMITADOR, POIS DENTRO DA TRIGGER USA-SE O ';' */
+CREATE TRIGGER NOME
+BEFORE/AFTER INSERT/DELETE/UPDATE ON TABELA
+FOR EACH ROW /* PARA CADA LINHA */
+BEGIN -> INICIO
+	QUALQUER COMANDO SQL;
+END -> FIM
+$
+
+

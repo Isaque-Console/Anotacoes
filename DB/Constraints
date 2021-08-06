@@ -1,0 +1,24 @@
+				Primary key
+
+Desc: A chave primária serve como um identificador do registro. É melhor
+que essa chave seja uma chave artificial(ex: ID) e não uma chave
+natural(ex: CPF), pois chaves naturais podem sofrer alterações.
+============================================================================
+				Foreign key
+
+Desc: A chave estrangeira é a chave primária de uma tabela que vai até outra
+tabela, para fazer referência entre registros.
+
+Uso:
+-Em um relacionamento 1x1, a chave estrangeira fica na tabela mais fraca e não se repetirá(cria o campo da FK usando 'unique').
+-Em um relacionamento 1xN, a chave estrangeira fica sempre na tabela de
+cardinalidade N e não deve criar o campo da FK usando 'unique'.
+
+obs: O conceito de tabela forte e fraca vai ser de acordo com a tabela que
+mais importa para o negócio, então irá mudar de acordo com o négocio. Ex:
+Em uma padaria, o cadastro do cliente importa mais que o cadastro do
+endereço dele. Em um estacionamento, o cadastro do carro importa mais que
+o cadastro do cliente, pois não importa muito quem está usando o carro,
+importa mais o carro que está sendo guardado no estacionamento.
+
+

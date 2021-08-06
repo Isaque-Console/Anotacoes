@@ -1,2 +1,2 @@
-listar os processos que estão conectados à determinada porta: lsof -w -n -i tcp:3000
-Fechar determinada porta: fuser -k 3000/tcp
+listar os processos que estão conectados à determinada porta(3000, nesse caso): lsof -w -n -i tcp:3000
+Fechar determinada porta(3000, nesse caso): fuser -k 3000/tcp

@@ -1,0 +1,4 @@
+[] docker container list -a: lista todos o containers que estão instalados na sua máquina.
+[] docker ps: Lista todos os containers ativos.
+[] docker start nome_do_container: inicia o container.
+[] docker stop node_do_container: para o container.

@@ -1,0 +1,2 @@
+1.Projeção é tudo que você quer ver na tela. É a primeira parte de uma query(select * from).
+2.Seleção é mostrar na tela apenas uma parte específica dos dados(where nome='pedro').

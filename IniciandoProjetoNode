@@ -1,19 +1,20 @@
 1. criar uma pasta com o nome do projeto.
 2. abrir essa pasta usando o VSCode.
 3. criar um arquivo dentro do VSCode, usando a extensão ".js" (segerido "app.js").
-4. Para gerar o arquivo "package.json": npm init -y .
+4. Para iniciar o npm na minha máquina e gerar o arquivo "package.json": npm init -y .
 5. Para instalar o Express temporariamente: npm i express .
-6. Para usar postgres no seu projeto NodeJS adicione a dependencia ao seu projeto: npm i pg .
+6. Para usar postgres no seu projeto NodeJS adicione a dependência ao seu projeto: npm i pg .
 7. verificar se apareceram os arquivos "node-modules", "package-lock.json" e "package.json".
-8. Para usar as variáveis de ambiente, temos de instalar a biblioteca DotEnv: npm install dotenv . Depois criar um arquivo ".env" e
+8. Para usar as variáveis de ambiente, temos de instalar a biblioteca DotEnv: npm install dotenv . Depois criar um arquivo com o nome de ".env" e
 colocar as variáveis de ambiente.
 9. criar um arquivo com o nome de ".gitignore" e escrever dentro dele "node_modules" e ".env". Assim, quando eu der o comando para a
-aplicação subir para o github, não irá subir essas pastas que estão escritas dentro do arquivo.
+aplicação subir para o github, não irão subir essas pastas que estão escritas dentro do arquivo.
 
 
-OBS: Se estiver usando o banco de dados no docker, deve iniciar o container, usando: docker start nome_do_container .
-OBS: Para rodar o projeto, basta digitar no terminal "node ./nome_do_projeto.js ". Ex: node ./app.js
-
+OBS 1: Se estiver usando o banco de dados no docker, deve iniciar o container, usando: docker start nome_do_container .
+OBS 2: Para rodar o projeto, basta digitar no terminal o caminho relativo do arquivo, dessa forma: "node ./nome_do_projeto.js ". Ex: node ./app.js .
+OBS 2.1: Para saber o diretório atual, basta usar o comando 'pwd' no terminal.
+OBS 2.2: Pode adicionar o nodemon como dependência de desenvolvimento(não vai estar servindo quando for para o servidor real), e ele irá reiniciar o servidor à cada alteração do código: npm i nodemon -D 
 ============================================================================================================================================
 								REQUIRES
 								
@@ -28,11 +29,11 @@ require ('dotenv').config(); // habilitando a utilização do dotenv
 								
 1.criar um arquivo com nome ".env";
 2.dentro dele coloco 
-HOST:locashost
-DB_USER:postgres // se colocar apenas USER, vai dar erro pois o programa irá considerar o USER do notebook
-PASSWORD:Euqasi112358
-PORT:5434
-DATABASE:Concessionaria // nome do banco que você irá usar
+HOST=locashost
+DB_USER=postgres // se colocar apenas USER, vai dar erro pois o programa irá considerar o USER do notebook
+PASSWORD=Euqasi112358
+PORT=5434
+DATABASE=Concessionaria // nome do banco que você irá usar
 
 OBS1: os valores das variáveis vai mudar de acordo com o DB que você está usando.
 OBS2: não colocar vírgulas no final dos valores das variáveis, senão essa vírgula irá contar como se fosse os valores das variáveis.
@@ -43,11 +44,11 @@ OBS3: os nomes das variáveis de ambiente são maiúsculas.
 
 dotenv.config(); // para poder usar o dotenv						
 const client = new Client({ // criando uma instância da comunicação com o postgres
-	user=process.env.DB_USER
-	host=
-	database= // IMPORTO TODOS ESSES DADOS DO DOTENV
-	password=
-	port=
+	user:process.env.DB_USER,
+	host:
+	database: // IMPORTO TODOS ESSES DADOS DO DOTENV
+	password:
+	port:
 })
 client.connect();
 
