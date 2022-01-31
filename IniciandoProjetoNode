@@ -1,11 +1,17 @@
+============================================================================================================================================
+								DIRETÓRIO
 1. criar uma pasta com o nome do projeto.
 2. abrir essa pasta usando o VSCode.
 3. criar um arquivo dentro do VSCode, usando a extensão ".js" (segerido "app.js").
+
+============================================================================================================================================
+								CONFIGURAÇÕES
+
 4. Para iniciar o npm na minha máquina e gerar o arquivo "package.json": npm init -y .
 5. Para instalar o Express temporariamente: npm i express .
 6. Para usar postgres no seu projeto NodeJS adicione a dependência ao seu projeto: npm i pg .
 7. verificar se apareceram os arquivos "node-modules", "package-lock.json" e "package.json".
-8. Para usar as variáveis de ambiente, temos de instalar a biblioteca DotEnv: npm install dotenv . Depois criar um arquivo com o nome de ".env" e
+8. Para usar as variáveis de ambiente, temos de instalar a biblioteca DotEnv: "npm install dotenv" . Depois criar um arquivo com o nome de ".env" e
 colocar as variáveis de ambiente.
 9. criar um arquivo com o nome de ".gitignore" e escrever dentro dele "node_modules" e ".env". Assim, quando eu der o comando para a
 aplicação subir para o github, não irão subir essas pastas que estão escritas dentro do arquivo.
@@ -14,7 +20,20 @@ aplicação subir para o github, não irão subir essas pastas que estão escrit
 OBS 1: Se estiver usando o banco de dados no docker, deve iniciar o container, usando: docker start nome_do_container .
 OBS 2: Para rodar o projeto, basta digitar no terminal o caminho relativo do arquivo, dessa forma: "node ./nome_do_projeto.js ". Ex: node ./app.js .
 OBS 2.1: Para saber o diretório atual, basta usar o comando 'pwd' no terminal.
-OBS 2.2: Pode adicionar o nodemon como dependência de desenvolvimento(não vai estar servindo quando for para o servidor real), e ele irá reiniciar o servidor à cada alteração do código: npm i nodemon -D 
+OBS 2.2: Pode adicionar o nodemon como dependência de desenvolvimento(não vai estar servindo quando for para o servidor real), e ele irá reiniciar o servidor à cada alteração do código: npm i
+nodemon -D 
+
+============================================================================================================================================
+								TYPESCRIPT
+								
+instalar algumas dependências: npm i -D @types/express typescript ts-node-dev
+instalar o tsc-init do npm globalmente(criar as configurações do TypeScript): npm install tsc-init -g
+
+** instalar o typescript localmente: npm install typescript --save-dev
+** rodar o transpilador no arquivo typescript: npx tsc src/app.ts
+** rodar o arquivo javascript gerado: node src/app.js
+** transpilar o TypeScript com es6: npx tsc --target es6 src/app.ts
+
 ============================================================================================================================================
 								REQUIRES
 								

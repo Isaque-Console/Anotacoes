@@ -46,20 +46,24 @@ o fork, é só apertar no botão "fork" que tem no repositório.
 
 ==========================================================================================================================================
 							TRABALHANDO COM BRANCHS(lógica)
-							
+
+OBS: ANTES DE MUDAR DE BRANCH, É PRECISO DAR UM 'GIT ADD'E 'GIT COMMIT', SE NÃO AS MUDANÇAS VÃO IR PARA A BRANCH DE DESTINO !!!!!
 1. criar uma nova branch;
 2. entrar na nova branch;
 3. fazer alterações nela;
-4. add os arquivos modificados;
+4. add os arquivos modificados(git add .);
 5. commitar as mudanças feitas;
-6. entrar na branch master;
-7. fazer um merge da outra branch para a branch master. 
+6. subir essa branch secundária para o repositório remoto (Ex: git push -u origin development);
+7. entrar no github e criar o PR;
+8. se o PR for aprovado, entrar na branch master;
+9. fazer um merge da outra branch para a branch master.
 							
 							TRABALHANDO COM BRANCHS(comandos)
 							
-1. ver quais brachs existem e saber em qual delas você está. O "*" é para informar em qual branch você está: git branch
+1. ver quais brachs existem e saber em qual delas você está: git branch (O "*" que aparecerá é para informar em qual branch você está)
 2. criar uma nova branch: git branch nome_da_branch
 3. mudar para outra branch: git checkout nome_da_branch
+4. subir uma branch para o github: git push -u origin nome_da_branch_que_quer_subir
 4. para fazer um merge(trazer as alterações de outra branch para a branch atual): git merge nome_da_branch_que_tem_as_alterações
 5. para apagar uma branch(este passo não está contido na lógica, então só use se realmente precisar): git branch -d nome_da_branch
 

@@ -22,9 +22,9 @@ arrayPedidos.forEach((pedido,index) {
 	console.log(`${index} - ${nome} - ${alimento} - ${bebida}`);
 })
 
-6.verifica se existe o parâmetro e retorna e linha completa.
+6.verifica se existe o parâmetro e retorna a linha completa.
 let find = pedidos.find(pedido => {
-   return pedido.id = 40;
+   return pedido.id == 40;
 });
 
 console.log(find);
@@ -36,7 +36,9 @@ let filter = pedidos.filter(pedido => {
 
 console.log(filter);
 
-8.verifica se existe o parâmetro e troca o parâmetro pela mensagem.
+8.verifica se existe o parâmetro e troca o parâmetro pela mensagem. É importante destacar que o método map() não
+modifica o array original, ele retorna um novo array com os itens resultantes do mapeamento.
+
 pedidos.map(pedido => {
    if(pedido.alimento == 'misto quente'){
       return pedido.alimento = 'não temos no momento';
