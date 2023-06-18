@@ -11,6 +11,7 @@ Ex: docker run --name galeradojs -e POSTGRES_PASSWORD= senhaqualquer -p 5434:543
 onde:
 galeradojs = nome do container.
 senhaquelquer = senha de sua escolha para o banco de dados.
+flag -e = para definir alguma variável de ambiente
 flag -p = para redirecionamento de porta.
 5434:5432 => estamos dizendo que nossa aplicaçao ira usar a porta localhost 5434 e estaremos acessando a porta 5432 do docker/container que é a porta onde o postgress está rodando.  
 postgres: nome da imagem que estamos utilizando.
