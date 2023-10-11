@@ -14,6 +14,9 @@ Entao, acesse a rota no seu navegador:
  - o usuario padrao do msql é "root",
  - coloque a senha que voce escolheu, nesse caso de exemplo "my-secret-pw"
 
+OBS: quando for se conectar no banco de dados via sua aplicação, e o banco de dados estiver rodando no docker ou
+rodando na sua máquina, entao o host será "localhost".
+
 Pronto, agora você ja estará dentro do adminer e poderá usar essa interface para gerenciar seu banco de dados.
 
 Link do video do Erick wendel explicando como usar: 
