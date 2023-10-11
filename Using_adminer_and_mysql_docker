@@ -1,18 +1,20 @@
-docker run \
-    --name mysql \
-    -e MYSQL_USER=erickwendel \
-    -e MYSQL_PASSWORD=minhasenhasecreta \
-    -e MYSQL_DB=heroes \
-    -p 3306:3306 \
-    -d \
-    mysql
+docker run --name some-mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mysql
 
 docker run \
     --name adminer \
     -p 8080:8080 \
-    --link mysql:mysql \
+    --link some-mysql:some-mysql \
     -d \
     adminer
+
+Depois de rodar esses dois comandos acima, o container do mysql e o container do adminer ja estarao rodando.
+Entao, acesse a rota no seu navegador: 
+ - http://localhost:8080/
+ - coloco o nome do servidor "some-mysql",
+ - o usuario padrao do msql é "root",
+ - coloque a senha que voce escolheu, nesse caso de exemplo "my-secret-pw"
+
+Pronto, agora você ja estará dentro do adminer e poderá usar essa interface para gerenciar seu banco de dados.
 
 Link do video do Erick wendel explicando como usar: 
  - https://erickwendel.teachable.com/courses/448292/lectures/8539753
