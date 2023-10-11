@@ -1,9 +1,9 @@
 docker run \
     --name mysql \
-    -e POSTGRES_USER=erickwendel \
-    -e POSTGRES_PASSWORD=minhasenhasecreta \
-    -e POSTGRES_DB=heroes \
-    -p 5432:5432 \
+    -e MYSQL_USER=erickwendel \
+    -e MYSQL_PASSWORD=minhasenhasecreta \
+    -e MYSQL_DB=heroes \
+    -p 3306:3306 \
     -d \
     mysql
 
