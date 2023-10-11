@@ -1,0 +1,18 @@
+docker run \
+    --name mysql \
+    -e POSTGRES_USER=erickwendel \
+    -e POSTGRES_PASSWORD=minhasenhasecreta \
+    -e POSTGRES_DB=heroes \
+    -p 5432:5432 \
+    -d \
+    mysql
+
+docker run \
+    --name adminer \
+    -p 8080:8080 \
+    --link mysql:mysql \
+    -d \
+    adminer
+
+Link do video do Erick wendel explicando como usar: 
+ - https://erickwendel.teachable.com/courses/448292/lectures/8539753
