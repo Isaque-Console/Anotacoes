@@ -1,11 +1,6 @@
 docker run --name some-mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mysql
 
-docker run \
-    --name adminer \
-    -p 8080:8080 \
-    --link some-mysql:some-mysql \
-    -d \
-    adminer
+docker run --name adminer -p 8080:8080 --link some-mysql:some-mysql -d adminer
 
 Depois de rodar esses dois comandos acima, o container do mysql e o container do adminer ja estarao rodando.
 Entao, acesse a rota no seu navegador: 
