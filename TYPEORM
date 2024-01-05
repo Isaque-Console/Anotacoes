@@ -1,0 +1,2 @@
+Gerar migrations:
+yarn typeorm migration:generate src/migrations
