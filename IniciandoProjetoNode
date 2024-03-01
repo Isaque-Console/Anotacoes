@@ -48,7 +48,7 @@ require ('dotenv').config(); // habilitando a utilização do dotenv
 								
 1.criar um arquivo com nome ".env";
 2.dentro dele coloco 
-HOST=locashost
+HOST=localhost
 DB_USER=postgres // se colocar apenas USER, vai dar erro pois o programa irá considerar o USER do notebook
 PASSWORD=Euqasi112358
 PORT=5434
