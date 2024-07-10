@@ -42,6 +42,7 @@ const app = express() // inicia a lib
 const { Client } = require('pg') // criando uma comunicação com o postgres
 const dotenv = require('dotenv'); 
 require ('dotenv').config(); // habilitando a utilização do dotenv
+// Pode-se utilizar tambem: import "dotenv/config";
 
 ============================================================================================================================================
 								VARIÁVEIS DE AMBIENTE
@@ -61,7 +62,6 @@ OBS3: os nomes das variáveis de ambiente são maiúsculas.
 ============================================================================================================================================
 							COMUNICAÇÃO COM O POSTGRES
 
-dotenv.config(); // para poder usar o dotenv						
 const client = new Client({ // criando uma instância da comunicação com o postgres
 	user:process.env.DB_USER,
 	host:
