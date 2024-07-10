@@ -40,8 +40,7 @@ instalar o tsc-init do npm globalmente(criar as configurações do TypeScript): 
 require("express") // importa a lib express
 const app = express() // inicia a lib
 const { Client } = require('pg') // criando uma comunicação com o postgres
-const dotenv = require('dotenv'); 
-require ('dotenv').config(); // habilitando a utilização do dotenv
+require('dotenv').config(); // habilitando a utilização do dotenv
 // Pode-se utilizar tambem: import "dotenv/config";
 
 ============================================================================================================================================
