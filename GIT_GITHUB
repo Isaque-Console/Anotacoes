@@ -126,12 +126,17 @@ OBS: Útil, por exemplo, para quando quero subir o último commit para o reposit
 
 ============================================================================================================================================
 								RESET
-								
+
+- Tira as modificações da área de commit e devolve eles para a fila de "changes". Não perde nenhuma das modificações e dar
+a possibilidade de ser feito um novo commit com essas modificações: git reset HEAD~1
 - Tirar o arquivo da fila de staged(ou seja, quando foi dado um git add nele): git reset HEAD nome_do_arquivo
 - Mata o commit, mas as alterações continuam, e o arquivo continua na área de staged, só que sem estar commitado: git reset --soft codigo_do_commit
 - Mata o commit e volta o arquivo pra área de modified: git reset --mixed codigo_do_commit
 -  : git reset --hard codigo_do_commit
-
+ 
+OBS: É recomendado utilizar o git reset HEAD~1 quando foi feito um commit em uma branch errada.
+Daí as alterações vão para "changes"(ainda não foram adicionadas no staged) e você pode dar um "git stash",
+mudar para branch desejada e dar um "git stash apply", aplicando as alterações na branch correta.
 
 
 
