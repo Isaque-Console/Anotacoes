@@ -1,0 +1,2 @@
+- Rodar NGROK sem bloquear via cors:
+$ ngrok http --host-header=rewrite 3000
